@@ -1,0 +1,78 @@
+[gd_scene load_steps=5 format=3 uid="uid://caeadxr7iwrgo"]
+
+[ext_resource type="PackedScene" uid="uid://b3qfwmyblfosw" path="res://actors/bullet.tscn" id="1_d0el3"]
+[ext_resource type="Texture2D" uid="uid://dg26fh8moh58d" path="res://content/Player.png" id="1_q4ybo"]
+
+[sub_resource type="GDScript" id="GDScript_lao4l"]
+script/source = "extends Area2D
+
+@export var bullet_velocity = 500
+@export var speed: float = 250
+@export var bullet_scene: PackedScene
+
+signal hit(body: Node2D)
+
+func spawn_bullet():
+	var bullet = bullet_scene.instantiate()
+	bullet.position = position + Vector2(0, -30)
+	bullet.linear_velocity.y = -bullet_velocity
+	get_parent().add_child(bullet)
+
+func shoot():
+	\"\"\"
+	Fires a projectile if the timer has expired
+	\"\"\"
+	if $ShootTimer.is_stopped():
+		spawn_bullet()
+		$ShootTimer.start()
+
+func _process(delta):
+	if Input.is_action_pressed(\"action_shoot\"):
+		shoot()
+	
+	var vel = Vector2.ZERO
+	
+	if Input.is_action_pressed(\"up\"):
+		vel.y -= 1
+	if Input.is_action_pressed(\"down\"):
+		vel.y += 1
+	if Input.is_action_pressed(\"left\"):
+		vel.x -= 1
+	if Input.is_action_pressed(\"right\"):
+		vel.x += 1
+
+	if vel.length_squared() > 0:
+		vel = vel.normalized() * speed
+		position = position + (vel * delta)
+
+	position = position.clamp(Vector2.ZERO, get_viewport_rect().size)
+
+func _on_body_entered(body: Node2D):
+	\"\"\"
+	This callback fires when a body enters the collision shape of the Player
+	Area2D class.
+	@param body: The node that has collided with this body.
+	\"\"\"
+	print(\"body entered\")
+	hit.emit(body)
+"
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_71nsi"]
+radius = 14.0
+
+[node name="Player" type="Area2D"]
+script = SubResource("GDScript_lao4l")
+speed = 300.0
+bullet_scene = ExtResource("1_d0el3")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_q4ybo")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_71nsi")
+
+[node name="ShootTimer" type="Timer" parent="."]
+wait_time = 0.2
+one_shot = true
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://byau38vxwfi12"]
 
-[ext_resource type="Texture2D" uid="uid://k4l0rdr7vdag" path="res://content/bg.png" id="1_47opy"]
+[ext_resource type="Texture2D" uid="uid://k4l0rdr7vdag" path="res://content/bg.png" id="1_05dat"]
 
 [sub_resource type="GDScript" id="GDScript_e3o1g"]
 script/source = "extends ParallaxBackground
@@ -24,16 +24,16 @@ motion_mirroring = Vector2(1200, 1200)
 metadata/_edit_group_ = true
 
 [node name="Sprite2D" type="Sprite2D" parent="ParallaxLayer"]
-texture = ExtResource("1_47opy")
+texture = ExtResource("1_05dat")
 
 [node name="Sprite2D2" type="Sprite2D" parent="ParallaxLayer"]
 position = Vector2(2400, 0)
-texture = ExtResource("1_47opy")
+texture = ExtResource("1_05dat")
 
 [node name="Sprite2D3" type="Sprite2D" parent="ParallaxLayer"]
 position = Vector2(0, 2400)
-texture = ExtResource("1_47opy")
+texture = ExtResource("1_05dat")
 
 [node name="Sprite2D4" type="Sprite2D" parent="ParallaxLayer"]
 position = Vector2(2400, 2400)
-texture = ExtResource("1_47opy")
+texture = ExtResource("1_05dat")

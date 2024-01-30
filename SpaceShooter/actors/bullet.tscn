@@ -1,0 +1,29 @@
+[gd_scene load_steps=4 format=3 uid="uid://b3qfwmyblfosw"]
+
+[ext_resource type="Texture2D" uid="uid://ckt4rxu2v8e47" path="res://content/Bullet.png" id="1_bouul"]
+
+[sub_resource type="GDScript" id="GDScript_qu71e"]
+script/source = "extends RigidBody2D
+
+func _on_visible_on_screen_notifier_2d_screen_exited():
+	queue_free()
+"
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_3oqeu"]
+size = Vector2(8, 32)
+
+[node name="Bullet" type="RigidBody2D"]
+collision_layer = 2
+collision_mask = 0
+mass = 0.1
+script = SubResource("GDScript_qu71e")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_3oqeu")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_bouul")
+
+[node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="."]
+
+[connection signal="screen_exited" from="VisibleOnScreenNotifier2D" to="." method="_on_visible_on_screen_notifier_2d_screen_exited"]
