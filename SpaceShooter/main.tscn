@@ -1,11 +1,13 @@
-[gd_scene load_steps=4 format=3 uid="uid://cyttn4tdnosb2"]
+[gd_scene load_steps=5 format=3 uid="uid://cyttn4tdnosb2"]
 
 [ext_resource type="Script" path="res://main.gd" id="1_1rsni"]
 [ext_resource type="PackedScene" uid="uid://byau38vxwfi12" path="res://environment/background_stars.tscn" id="1_r8tei"]
+[ext_resource type="PackedScene" uid="uid://tjtb2loahan0" path="res://actors/enemy.tscn" id="2_n221l"]
 [ext_resource type="PackedScene" uid="uid://caeadxr7iwrgo" path="res://actors/player.tscn" id="2_y7b0d"]
 
 [node name="Main" type="Node2D"]
 script = ExtResource("1_1rsni")
+baddie_scene = ExtResource("2_n221l")
 
 [node name="BackgroundStars" parent="." instance=ExtResource("1_r8tei")]
 

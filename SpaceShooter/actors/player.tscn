@@ -19,9 +19,6 @@ func spawn_bullet():
 	get_parent().add_child(bullet)
 
 func shoot():
-	\"\"\"
-	Fires a projectile if the timer has expired
-	\"\"\"
 	if $ShootTimer.is_stopped():
 		spawn_bullet()
 		$ShootTimer.start()
@@ -53,7 +50,6 @@ func _on_body_entered(body: Node2D):
 	Area2D class.
 	@param body: The node that has collided with this body.
 	\"\"\"
-	print(\"body entered\")
 	hit.emit(body)
 "
 
