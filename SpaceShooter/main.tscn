@@ -16,3 +16,5 @@ bullet_velocity = 600
 
 [node name="SpawnPoint" type="Marker2D" parent="."]
 position = Vector2(600, 550)
+
+[connection signal="hit" from="Player" to="." method="_on_player_hit"]

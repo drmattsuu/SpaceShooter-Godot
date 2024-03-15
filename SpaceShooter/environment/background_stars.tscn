@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://byau38vxwfi12"]
 
-[ext_resource type="Texture2D" uid="uid://k4l0rdr7vdag" path="res://content/bg.png" id="1_05dat"]
+[ext_resource type="Texture2D" uid="uid://k4l0rdr7vdag" path="res://resources/bg.png" id="1_05dat"]
 
 [sub_resource type="GDScript" id="GDScript_e3o1g"]
 script/source = "extends ParallaxBackground
