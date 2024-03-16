@@ -11,8 +11,8 @@ var rad_per_second = deg_to_rad(10)
 var scroll_vector = Vector2(0.0, scrolling_speed)
 
 func _process(delta):
-	scroll_vector = scroll_vector.rotated(rad_per_second * delta)
-	scroll_offset += scroll_vector * delta
+    scroll_vector = scroll_vector.rotated(rad_per_second * delta)
+    scroll_offset += scroll_vector * delta
 "
 
 [node name="BackgroundStars" type="ParallaxBackground"]

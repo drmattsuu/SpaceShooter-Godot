@@ -17,4 +17,12 @@ bullet_velocity = 600
 [node name="SpawnPoint" type="Marker2D" parent="."]
 position = Vector2(600, 550)
 
+[node name="BaddieSpawnPoint" type="Marker2D" parent="."]
+position = Vector2(600, 60)
+
+[node name="Baddies" type="Node" parent="."]
+
+[node name="BaddieTimer" type="Timer" parent="."]
+
 [connection signal="hit" from="Player" to="." method="_on_player_hit"]
+[connection signal="timeout" from="BaddieTimer" to="." method="_on_baddie_timer_timeout"]
