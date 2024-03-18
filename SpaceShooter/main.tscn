@@ -23,9 +23,6 @@ bullet_velocity = 600
 [node name="SpawnPoint" type="Marker2D" parent="."]
 position = Vector2(600, 550)
 
-[node name="BaddieSpawnPoint" type="Marker2D" parent="."]
-position = Vector2(600, 60)
-
 [node name="Baddies" type="Node" parent="."]
 
 [node name="BaddieTimer" type="Timer" parent="."]

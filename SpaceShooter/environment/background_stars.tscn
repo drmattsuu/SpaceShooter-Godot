@@ -5,13 +5,22 @@
 [sub_resource type="GDScript" id="GDScript_e3o1g"]
 script/source = "extends ParallaxBackground
 
-@export var scrolling_speed = 500.0
+@export var scrolling_speed = 200.0
 
-var rad_per_second = deg_to_rad(10)
+const switch_angle_rad = deg_to_rad(30)
+const rad_per_second = deg_to_rad(10)
+var current_rad_per_second = rad_per_second
+var cumulative_rotation = 0
 var scroll_vector = Vector2(0.0, scrolling_speed)
 
 func _process(delta):
-    scroll_vector = scroll_vector.rotated(rad_per_second * delta)
+    if cumulative_rotation > switch_angle_rad:
+        current_rad_per_second = -rad_per_second
+    elif cumulative_rotation < -switch_angle_rad:
+        current_rad_per_second = rad_per_second
+    var rotateBy = current_rad_per_second * delta
+    scroll_vector = scroll_vector.rotated(rotateBy)
+    cumulative_rotation += rotateBy
     scroll_offset += scroll_vector * delta
 "
 
