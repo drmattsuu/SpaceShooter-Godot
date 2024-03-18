@@ -28,9 +28,10 @@ func _on_player_hit(body):
 
 func _on_baddie_timer_timeout():
     if baddie_scene.can_instantiate():
+        var spawnFollower = ($ScreenTop/Follower as PathFollow2D)
+        spawnFollower.progress_ratio = randf_range(0.25, 0.75)
         var newBaddie = baddie_scene.instantiate()
-        newBaddie.position = $BaddieSpawnPoint.position
-        newBaddie.look_at($SpawnPoint.position)
+        newBaddie.position = spawnFollower.position
         newBaddie.killed.connect(_baddie_killed)
         $Baddies.add_child(newBaddie)
 

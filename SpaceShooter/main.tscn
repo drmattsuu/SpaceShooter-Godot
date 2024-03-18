@@ -1,13 +1,19 @@
-[gd_scene load_steps=5 format=3 uid="uid://cyttn4tdnosb2"]
+[gd_scene load_steps=6 format=3 uid="uid://cyttn4tdnosb2"]
 
 [ext_resource type="Script" path="res://main.gd" id="1_1rsni"]
 [ext_resource type="PackedScene" uid="uid://byau38vxwfi12" path="res://environment/background_stars.tscn" id="1_r8tei"]
-[ext_resource type="PackedScene" uid="uid://tjtb2loahan0" path="res://actors/enemy.tscn" id="2_n221l"]
+[ext_resource type="PackedScene" uid="uid://2rye1ajle5pa" path="res://actors/simple_random_enemy.tscn" id="2_08omq"]
 [ext_resource type="PackedScene" uid="uid://caeadxr7iwrgo" path="res://actors/player.tscn" id="2_y7b0d"]
+
+[sub_resource type="Curve2D" id="Curve2D_oykrk"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1200, 0)
+}
+point_count = 2
 
 [node name="Main" type="Node2D"]
 script = ExtResource("1_1rsni")
-baddie_scene = ExtResource("2_n221l")
+baddie_scene = ExtResource("2_08omq")
 
 [node name="BackgroundStars" parent="." instance=ExtResource("1_r8tei")]
 
@@ -23,6 +29,11 @@ position = Vector2(600, 60)
 [node name="Baddies" type="Node" parent="."]
 
 [node name="BaddieTimer" type="Timer" parent="."]
+
+[node name="ScreenTop" type="Path2D" parent="."]
+curve = SubResource("Curve2D_oykrk")
+
+[node name="Follower" type="PathFollow2D" parent="ScreenTop"]
 
 [connection signal="hit" from="Player" to="." method="_on_player_hit"]
 [connection signal="timeout" from="BaddieTimer" to="." method="_on_baddie_timer_timeout"]

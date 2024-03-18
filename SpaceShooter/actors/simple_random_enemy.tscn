@@ -1,28 +1,26 @@
-[gd_scene load_steps=4 format=3 uid="uid://tjtb2loahan0"]
+[gd_scene load_steps=4 format=3 uid="uid://2rye1ajle5pa"]
 
-[ext_resource type="Texture2D" uid="uid://dboofuom771qa" path="res://resources/Enemy.png" id="1_11hg6"]
-[ext_resource type="Script" path="res://actors/enemy.gd" id="1_av516"]
+[ext_resource type="Script" path="res://actors/enemy.gd" id="1_tvxf6"]
+[ext_resource type="Texture2D" uid="uid://dboofuom771qa" path="res://resources/Enemy.png" id="2_n63ae"]
 
-[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_7mlwc"]
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_dwytb"]
 radius = 18.0
 height = 50.0
 
-[node name="Enemy" type="CharacterBody2D" groups=["boids"]]
-collision_layer = 3
-collision_mask = 2
+[node name="SimpleRandomEnemy" type="CharacterBody2D"]
+collision_mask = 3
 motion_mode = 1
-script = ExtResource("1_av516")
-metadata/_edit_group_ = true
+script = ExtResource("1_tvxf6")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(-6, 0)
 rotation = 1.5708
-shape = SubResource("CapsuleShape2D_7mlwc")
+shape = SubResource("CapsuleShape2D_dwytb")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 rotation = 1.5708
 scale = Vector2(0.8, 1)
-texture = ExtResource("1_11hg6")
+texture = ExtResource("2_n63ae")
 
 [node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="."]
 
