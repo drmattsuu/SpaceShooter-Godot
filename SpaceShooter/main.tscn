@@ -32,5 +32,29 @@ curve = SubResource("Curve2D_oykrk")
 
 [node name="Follower" type="PathFollow2D" parent="ScreenTop"]
 
+[node name="GameUI" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+
+[node name="ScoreLabel" type="RichTextLabel" parent="GameUI"]
+offset_left = 32.0
+offset_top = 36.0
+offset_right = 87.0
+offset_bottom = 62.0
+text = "Score:
+"
+
+[node name="ScoreValueLabel" type="RichTextLabel" parent="GameUI"]
+offset_left = 85.0
+offset_top = 37.0
+offset_right = 275.0
+offset_bottom = 63.0
+text = "0
+"
+
+[node name="StartUI" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+
 [connection signal="hit" from="Player" to="." method="_on_player_hit"]
 [connection signal="timeout" from="BaddieTimer" to="." method="_on_baddie_timer_timeout"]
